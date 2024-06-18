@@ -1,20 +1,14 @@
 import express from 'express';
-import {
-  createArticle,
-  getArticles,
-  getArticleById,
-  updateArticle,
-  patchArticle,
-  deleteArticle
-} from '../controllers/articleController';
+import { ArticleController } from '../controllers/articleController';
 
 const router = express.Router();
+const articleController = new ArticleController();
 
-router.post('/articles', createArticle);
-router.get('/articles', getArticles);
-router.get('/articles/:id', getArticleById);
-router.put('/articles/:id', updateArticle);
-router.put('articles/:id', patchArticle);
-router.delete('/articles/:id', deleteArticle);
+router.post('/articles', articleController.createArticle);
+router.get('/articles', articleController.getArticles);
+router.get('/articles/:id', articleController.getArticleById);
+router.put('/articles/:id', articleController.updateArticle);
+router.patch('/articles/:id', articleController.patchArticle);
+router.delete('/articles/:id', articleController.deleteArticle);
 
 export default router;
